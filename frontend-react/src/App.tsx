@@ -14,16 +14,16 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App'>
-        <Header clearToken={removeToken} token={ token }/>
-        {!token && token!=="" &&token!== undefined?
-        <Login setToken={setToken} />
-        :(
-        <>
-          <Routes>
-            <Route exact path="/profile" element={<Profile token={token} setToken={setToken}/>}></Route>
-          </Routes>
-        </>
-      )}  
+        <Header removeToken={removeToken} token={token} />
+        {!token && token !== "" && token !== undefined ?
+          <Login setToken={setToken} />
+          : (
+            <>
+              <Routes>
+                <Route path="/profile" element={<Profile token={token} />}></Route>
+              </Routes>
+            </>
+          )}
       </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>

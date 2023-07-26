@@ -1,7 +1,7 @@
 import axios from "axios"
 
 type HeaderProps = {
-    clearToken: Function,
+    removeToken: Function,
     token: string | null
 }
 
@@ -13,7 +13,7 @@ function Header(props: HeaderProps) {
       url:"http://localhost:5000/logout",
     })
     .then((_response) => {
-       props.clearToken()
+       props.removeToken()
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)

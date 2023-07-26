@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
 
-export type ProfileProps = {
+type ProfileProps = {
     token: string
 }
 
