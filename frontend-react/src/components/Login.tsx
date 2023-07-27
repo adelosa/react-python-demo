@@ -50,22 +50,20 @@ function Login(props: LoginProps) {
 
     return (
       <div>
-        <h1>Login</h1>
+        <h2>Login</h2>
           <form className="login">
             <input onChange={handleChange} 
                   type="email"
-                //   text={ loginForm.email }
                   name="email" 
                   placeholder="Email" 
                   value={loginForm.email} />
             <input onChange={handleChange} 
                   type="password"
-                //   text={loginForm.password} 
                   name="password" 
                   placeholder="Password" 
                   value={loginForm.password} />
 
-          <button onClick={logMeIn}>Submit</button>
+          <button className='btn btn-primary' onClick={logMeIn}>Submit</button>
         </form>
         <p>Message: { loginForm.message }</p>
       </div>

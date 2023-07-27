@@ -1,19 +1,19 @@
-import axios from "axios";
+import axios from "axios"
 import { useState } from "react"
 
 type ProfileProps = {
     token: string
+    setToken: Function
 }
 
 function Profile(props: ProfileProps) {
 
     type ProfileData = {
-        profile_name: string,
+        profile_name: string
         about_me: string
     }
 
     const [profileData, setProfileData] = useState<ProfileData | null>(null)
-
 
     function getData() {
         axios({
@@ -25,6 +25,8 @@ function Profile(props: ProfileProps) {
         })
         .then((response) => {
             const res = response.data
+            console.log(res)
+            res.access_token && props.setToken(res.access_token)
             setProfileData(({
                 profile_name: res.name,
                 about_me: res.about
@@ -34,7 +36,10 @@ function Profile(props: ProfileProps) {
                 console.log(error.response)
                 console.log(error.response.status)
                 console.log(error.response.headers)
-                setProfileData(({ profile_name: "Failed", about_me: "Unknown" }))
+                setProfileData(({ 
+                    profile_name: "Failed", 
+                    about_me: "Unknown" 
+                }))
             }
         })
     }
@@ -42,13 +47,15 @@ function Profile(props: ProfileProps) {
     return (
         <div>
             <p>To get your profile details: </p>
-            <button onClick={getData}>Click me</button>
-            {profileData && <div>
+            <p>
+                <button className='btn btn-secondary' onClick={getData}>Click me</button>
+            </p>
+            {profileData && 
+            <div>
                 <p>Profile name: {profileData.profile_name}</p>
                 <p>About me: {profileData.about_me}</p>
             </div>
             }
-
         </div>
     )
 }

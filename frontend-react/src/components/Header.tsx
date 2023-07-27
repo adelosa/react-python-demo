@@ -24,9 +24,9 @@ function Header(props: HeaderProps) {
 
     return(
         <header className="App-header">
-            <h1>Vite + React</h1>
+            <h1>react-python-demo</h1>
             {props.token ?
-            <button onClick={logMeOut}> 
+            <button className='btn btn-primary' onClick={logMeOut}> 
                 Logout
             </button>
             :

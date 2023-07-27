@@ -18,7 +18,7 @@ def create_token():
     if email != "test" or password != "test":
         return {"msg": "Wrong email or password"}, 401
 
-    access_token = jwtlib.create_access_token(identity=email)
+    access_token = jwtlib.create_access_token(identity=email,)
     response = {"access_token": access_token}
     return response
 
@@ -30,6 +30,7 @@ def my_profile():
         "name": "Nagato",
         "about": "Hello! I'm a full stack developer that loves python and javascript"
     }
+    response_body = {**response_body, **jwtlib.get_jwt()}
     return response_body
 
 
