@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import { Button, Card } from "react-bootstrap"
 
 type ProfileProps = {
     token: string
@@ -46,16 +47,17 @@ function Profile(props: ProfileProps) {
 
     return (
         <div>
-            <p>To get your profile details: </p>
-            <p>
-                <button className='btn btn-secondary' onClick={getData}>Click me</button>
-            </p>
-            {profileData && 
-            <div>
-                <p>Profile name: {profileData.profile_name}</p>
-                <p>About me: {profileData.about_me}</p>
-            </div>
-            }
+            <p><Button variant='secondary' onClick={getData}>Fetch my profile</Button></p>
+            {profileData &&
+            <> 
+                <Card>
+                    {/* <Card.Header>Profile</Card.Header> */}
+                    <Card.Body>
+                        <Card.Title>{profileData.profile_name}</Card.Title>
+                        <Card.Text>{profileData.about_me}</Card.Text>
+                    </Card.Body>
+                </Card>
+            </>}
         </div>
     )
 }
